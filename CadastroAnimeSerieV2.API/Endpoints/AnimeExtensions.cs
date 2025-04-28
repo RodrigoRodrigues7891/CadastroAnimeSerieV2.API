@@ -1,4 +1,5 @@
-﻿using CadastroAnimeSerieV2.API.DTO.Response;
+﻿using CadastroAnimeSerieV2.API.DTO.Request;
+using CadastroAnimeSerieV2.API.DTO.Response;
 using CadastroAnimeSerieV2.Dados.Banco;
 using CadastroAnimeSerieV2.Modelos;
 using Microsoft.AspNetCore.Mvc;
@@ -60,7 +61,48 @@ public static class AnimeExtensions
             return Results.Ok(AnimeResponse.EntityListToResponseList(listaDeAnime));
         }).WithSummary("Retorna uma lista paginada");
 
+        groupBuilder.MapPost("", async ([FromServices] DAL<Anime> dalAnime, [FromBody] AnimeRequest request) =>
+        {
+            var anime = new Anime(request.Nome, request.Sinopse, request.QuantidadeDeEpisodios, request.AnoDoLancamento, request.Diretor);
 
+            await dalAnime.Adicionar(anime);
+            return Results.Ok();
+        }).WithSummary("Adiciona um novo anime. Campos obrigatórios: Nome | Sinópse");
+
+        groupBuilder.MapPut("", async ([FromServices] DAL<Anime> dalAnime, [FromBody] AnimeRequestEdit request) =>
+        {
+            var animeAAtualizar = dalAnime.RecuperarPor(a => a.Id == request.id);
+            if (animeAAtualizar is null)
+            {
+                return Results.NotFound();
+            }
+
+            if (string.IsNullOrWhiteSpace(request.Nome) || string.IsNullOrWhiteSpace(request.Sinopse))
+            {
+                return Results.BadRequest("O Nome e a Sinopse devem ser informados");
+            }
+
+            animeAAtualizar.Nome = request.Nome;
+            animeAAtualizar.Sinopse = request.Sinopse;
+            animeAAtualizar.QuantidadeDeEpisodios = request.QuantidadeDeEpisodios;
+            animeAAtualizar.AnoDoLancamento = request.AnoDoLancamento;
+            animeAAtualizar.Diretor = request.Diretor;
+
+            await dalAnime.Atualizar(animeAAtualizar);
+            return Results.Ok();
+        }).WithSummary("Altera um anime. Campos obrigatórios: Nome | Sinópse");
+
+        groupBuilder.MapDelete("{id}", async ([FromServices] DAL<Anime> dalAnime, int id) =>
+        {
+            var animeADeletar = dalAnime.RecuperarPor(a => a.Id == id);
+            if (animeADeletar is null)
+            {
+                return Results.NotFound();
+            }
+
+            await dalAnime.Deletar(animeADeletar);
+            return Results.NoContent();
+        }).WithSummary("Apaga um anime pelo id");
         #endregion
     }
 }
