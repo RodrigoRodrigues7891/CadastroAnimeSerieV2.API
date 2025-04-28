@@ -24,6 +24,7 @@ builder.Services.AddCors(
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddTransient<DAL<Anime>>();
+builder.Services.AddTransient<DAL<Serie>>();
 
 var app = builder.Build();
 
@@ -33,7 +34,6 @@ app.UseSwagger();
 app.UseSwaggerUI();
 
 app.AddEndPointsAnime();
-
-app.MapGet("/", () => "Hello World!");
+app.AddEndPointsSerie();
 
 app.Run();

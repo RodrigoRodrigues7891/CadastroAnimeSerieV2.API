@@ -1,4 +1,4 @@
-﻿using CadastroAnimeSerieV2.API.DTO.Response;
+﻿using CadastroAnimeSerieV2.API.DTO.Converter;
 using CadastroAnimeSerieV2.Dados.Banco;
 using CadastroAnimeSerieV2.Modelos;
 using Microsoft.AspNetCore.Mvc;
@@ -21,21 +21,31 @@ public static class AnimeExtensions
             {
                 return Results.NotFound();
             }
-
-            //return Results.Ok(listaDeAnimes);
-            return Results.Ok(EntityListToResponseList(listaDeAnimes));
+            
+            return Results.Ok(DTOConverter.AnimeEntityListToResponseList(listaDeAnimes));
         });
 
+        groupBuilder.MapGet("{id}", ([FromServices] DAL<Anime> dalAnime, int id) =>
+        {
+            var anime = dalAnime.RecuperarPor(a => a.Id == id);
+            if (anime is null)
+            {
+                return Results.NotFound();
+            }
+
+            return Results.Ok(DTOConverter.AnimeEntityToResponse(anime));
+        });
+
+        groupBuilder.MapGet("nome/{nome}", ([FromServices] DAL<Anime> dalAnime, string nome) =>
+        {
+            var anime = dalAnime.RecuperarPor(a => a.Nome.ToUpper().Equals(nome.ToUpper()));
+            if (anime is null)
+            {
+                return Results.NotFound();
+            }
+
+            return Results.Ok(DTOConverter.AnimeEntityToResponse(anime));
+        });
         #endregion
-    }
-
-    private static ICollection<AnimeResponse> EntityListToResponseList(IEnumerable<Anime> listaDeAnimes)
-    {
-        return listaDeAnimes.Select(a => EntityToResponse(a)).ToList();
-    }
-
-    private static AnimeResponse EntityToResponse(Anime anime)
-    {
-        return new AnimeResponse(anime.Id, anime.Nome, anime.Sinopse, anime.AnoDoLancamento, anime.QuantidadeDeEpisodios, anime.Diretor);
     }
 }
