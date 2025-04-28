@@ -23,7 +23,7 @@ public static class AnimeExtensions
             }
             
             return Results.Ok(AnimeResponse.EntityListToResponseList(listaDeAnimes));
-        });
+        }).WithSummary("Retorna todos os animes");
 
         groupBuilder.MapGet("{id}", ([FromServices] DAL<Anime> dalAnime, int id) =>
         {
@@ -34,7 +34,7 @@ public static class AnimeExtensions
             }
 
             return Results.Ok(AnimeResponse.EntityToResponse(anime));
-        });
+        }).WithSummary("Retorna um anime pelo id");
 
         groupBuilder.MapGet("nome/{nome}", ([FromServices] DAL<Anime> dalAnime, string nome) =>
         {
@@ -45,7 +45,7 @@ public static class AnimeExtensions
             }
 
             return Results.Ok(AnimeResponse.EntityToResponse(anime));
-        });
+        }).WithSummary("Retorna um anime pelo nome");
 
         groupBuilder.MapGet("paginado", async ([FromServices] DAL<Anime> dalAnime,
                                                [FromQuery] int pagina = 1,
@@ -58,7 +58,9 @@ public static class AnimeExtensions
             }
 
             return Results.Ok(AnimeResponse.EntityListToResponseList(listaDeAnime));
-        });
+        }).WithSummary("Retorna uma lista paginada");
+
+
         #endregion
     }
 }

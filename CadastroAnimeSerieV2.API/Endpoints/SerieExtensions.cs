@@ -23,7 +23,7 @@ public static class SerieExtensions
             }
 
             return Results.Ok(SerieResponse.EntityListToResponseList(listaDeSeries));
-        });
+        }).WithSummary("Retorna todas as séries");
 
         groupBuilder.MapGet("{id}", ([FromServices] DAL<Serie> dalSerie, int id) =>
         {
@@ -34,7 +34,7 @@ public static class SerieExtensions
             }
 
             return Results.Ok(SerieResponse.EntityToResponse(serie));
-        });
+        }).WithSummary("Retorna uma série pelo id");
 
         groupBuilder.MapGet("nome/{nome}", ([FromServices] DAL<Serie> dalSerie, string nome) =>
         {
@@ -45,7 +45,7 @@ public static class SerieExtensions
             }
 
             return Results.Ok(SerieResponse.EntityToResponse(serie));
-        });
+        }).WithSummary("Retorna uma série pelo nome");
 
         groupBuilder.MapGet("paginado", async ([FromServices] DAL<Serie> dalSerie,
                                                [FromQuery] int pagina = 1,
@@ -58,7 +58,7 @@ public static class SerieExtensions
             }
 
             return Results.Ok(SerieResponse.EntityListToResponseList(listaDeSerie));
-        });
+        }).WithSummary("Retorna uma lista paginada");
         #endregion
     }
 }
