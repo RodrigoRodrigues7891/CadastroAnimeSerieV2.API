@@ -46,6 +46,19 @@ public static class SerieExtensions
 
             return Results.Ok(SerieResponse.EntityToResponse(serie));
         });
+
+        groupBuilder.MapGet("paginado", async ([FromServices] DAL<Serie> dalSerie,
+                                               [FromQuery] int pagina = 1,
+                                               [FromQuery] int tamanhoPorPagina = 2) =>
+        {
+            var listaDeSerie = await dalSerie.ListarPaginado(pagina, tamanhoPorPagina);
+            if (listaDeSerie is null)
+            {
+                return Results.NotFound();
+            }
+
+            return Results.Ok(SerieResponse.EntityListToResponseList(listaDeSerie));
+        });
         #endregion
     }
 }

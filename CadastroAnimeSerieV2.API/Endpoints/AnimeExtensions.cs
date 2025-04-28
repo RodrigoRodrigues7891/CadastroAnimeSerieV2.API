@@ -46,6 +46,19 @@ public static class AnimeExtensions
 
             return Results.Ok(AnimeResponse.EntityToResponse(anime));
         });
+
+        groupBuilder.MapGet("paginado", async ([FromServices] DAL<Anime> dalAnime,
+                                               [FromQuery] int pagina = 1,
+                                               [FromQuery] int tamanhoPorPagina = 2) =>
+        {
+            var listaDeAnime = await dalAnime.ListarPaginado(pagina, tamanhoPorPagina);
+            if (listaDeAnime is null)
+            {
+                return Results.NotFound();
+            }
+
+            return Results.Ok(AnimeResponse.EntityListToResponseList(listaDeAnime));
+        });
         #endregion
     }
 }
