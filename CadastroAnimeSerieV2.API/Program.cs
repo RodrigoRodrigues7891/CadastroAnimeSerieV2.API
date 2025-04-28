@@ -1,4 +1,6 @@
+using CadastroAnimeSerieV2.API.Endpoints;
 using CadastroAnimeSerieV2.Dados.Banco;
+using CadastroAnimeSerieV2.Modelos;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -21,12 +23,16 @@ builder.Services.AddCors(
 
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddTransient<DAL<Anime>>();
+
 var app = builder.Build();
 
 app.UseCors("wasm");
 
 app.UseSwagger();
 app.UseSwaggerUI();
+
+app.AddEndPointsAnime();
 
 app.MapGet("/", () => "Hello World!");
 
