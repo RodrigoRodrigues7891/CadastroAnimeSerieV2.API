@@ -1,4 +1,4 @@
-﻿using CadastroAnimeSerieV2.API.DTO.Converter;
+﻿using CadastroAnimeSerieV2.API.DTO.Response;
 using CadastroAnimeSerieV2.Dados.Banco;
 using CadastroAnimeSerieV2.Modelos;
 using Microsoft.AspNetCore.Mvc;
@@ -22,7 +22,7 @@ public static class AnimeExtensions
                 return Results.NotFound();
             }
             
-            return Results.Ok(DTOConverter.AnimeEntityListToResponseList(listaDeAnimes));
+            return Results.Ok(AnimeResponse.EntityListToResponseList(listaDeAnimes));
         });
 
         groupBuilder.MapGet("{id}", ([FromServices] DAL<Anime> dalAnime, int id) =>
@@ -33,7 +33,7 @@ public static class AnimeExtensions
                 return Results.NotFound();
             }
 
-            return Results.Ok(DTOConverter.AnimeEntityToResponse(anime));
+            return Results.Ok(AnimeResponse.EntityToResponse(anime));
         });
 
         groupBuilder.MapGet("nome/{nome}", ([FromServices] DAL<Anime> dalAnime, string nome) =>
@@ -44,7 +44,7 @@ public static class AnimeExtensions
                 return Results.NotFound();
             }
 
-            return Results.Ok(DTOConverter.AnimeEntityToResponse(anime));
+            return Results.Ok(AnimeResponse.EntityToResponse(anime));
         });
         #endregion
     }

@@ -1,4 +1,4 @@
-﻿using CadastroAnimeSerieV2.API.DTO.Converter;
+﻿using CadastroAnimeSerieV2.API.DTO.Response;
 using CadastroAnimeSerieV2.Dados.Banco;
 using CadastroAnimeSerieV2.Modelos;
 using Microsoft.AspNetCore.Mvc;
@@ -22,7 +22,7 @@ public static class SerieExtensions
                 return Results.NotFound();
             }
 
-            return Results.Ok(DTOConverter.SerieEntityListToResponseList(listaDeSeries));
+            return Results.Ok(SerieResponse.EntityListToResponseList(listaDeSeries));
         });
 
         groupBuilder.MapGet("{id}", ([FromServices] DAL<Serie> dalSerie, int id) =>
@@ -33,7 +33,7 @@ public static class SerieExtensions
                 return Results.NotFound();
             }
 
-            return Results.Ok(DTOConverter.SerieEntityToResponse(serie));
+            return Results.Ok(SerieResponse.EntityToResponse(serie));
         });
 
         groupBuilder.MapGet("nome/{nome}", ([FromServices] DAL<Serie> dalSerie, string nome) =>
@@ -44,7 +44,7 @@ public static class SerieExtensions
                 return Results.NotFound();
             }
 
-            return Results.Ok(DTOConverter.SerieEntityToResponse(serie));
+            return Results.Ok(SerieResponse.EntityToResponse(serie));
         });
         #endregion
     }
