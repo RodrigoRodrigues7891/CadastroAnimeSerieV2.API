@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CadastroAnimeSerieV2.API", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CadastroAnimeSerieV2.Modelos", "CadastroAnimeSerieV2.Modelos\CadastroAnimeSerieV2.Modelos.csproj", "{160B3520-C1B5-4E73-8B57-ACFCF2A30CB7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CadastroAnimeSerieV2.Dados", "CadastroAnimeSerieV2.Dados\CadastroAnimeSerieV2.Dados.csproj", "{402F2E28-1997-4068-895A-6B85962C2BD6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{160B3520-C1B5-4E73-8B57-ACFCF2A30CB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{160B3520-C1B5-4E73-8B57-ACFCF2A30CB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{160B3520-C1B5-4E73-8B57-ACFCF2A30CB7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{402F2E28-1997-4068-895A-6B85962C2BD6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{402F2E28-1997-4068-895A-6B85962C2BD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{402F2E28-1997-4068-895A-6B85962C2BD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{402F2E28-1997-4068-895A-6B85962C2BD6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
