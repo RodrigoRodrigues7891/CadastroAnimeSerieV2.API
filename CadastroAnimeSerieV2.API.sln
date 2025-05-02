@@ -11,8 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CadastroAnimeSerieV2.Dados"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CadastroAnimeSerieV2.Test.API.Integration", "Tests\CadastroAnimeSerieV2.API.IntegrationTests\CadastroAnimeSerieV2.Test.API.Integration.csproj", "{F3D306F0-7ECB-4E21-B26D-DD1E1825B8CB}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{69273609-B35E-4A64-AD70-3CA97FF1C97C}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

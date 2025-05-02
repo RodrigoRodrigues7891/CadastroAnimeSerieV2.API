@@ -23,6 +23,7 @@ builder.Services.AddCors(
 
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddTransient<DAL<Anime>>();
 builder.Services.AddTransient<DAL<Serie>>();
 
@@ -37,3 +38,5 @@ app.AddEndPointsAnime();
 app.AddEndPointsSerie();
 
 app.Run();
+
+public partial class Program { }
