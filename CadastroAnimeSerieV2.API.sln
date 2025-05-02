@@ -1,13 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35707.178 d17.12
+VisualStudioVersion = 17.12.35707.178
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CadastroAnimeSerieV2.API", "CadastroAnimeSerieV2.API\CadastroAnimeSerieV2.API.csproj", "{7EC5B156-5641-4BA4-AE53-5A8866D27701}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CadastroAnimeSerieV2.Modelos", "CadastroAnimeSerieV2.Modelos\CadastroAnimeSerieV2.Modelos.csproj", "{160B3520-C1B5-4E73-8B57-ACFCF2A30CB7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CadastroAnimeSerieV2.Dados", "CadastroAnimeSerieV2.Dados\CadastroAnimeSerieV2.Dados.csproj", "{402F2E28-1997-4068-895A-6B85962C2BD6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CadastroAnimeSerieV2.Test.API.Integration", "Tests\CadastroAnimeSerieV2.API.IntegrationTests\CadastroAnimeSerieV2.Test.API.Integration.csproj", "{F3D306F0-7ECB-4E21-B26D-DD1E1825B8CB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{69273609-B35E-4A64-AD70-3CA97FF1C97C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +31,10 @@ Global
 		{402F2E28-1997-4068-895A-6B85962C2BD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{402F2E28-1997-4068-895A-6B85962C2BD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{402F2E28-1997-4068-895A-6B85962C2BD6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3D306F0-7ECB-4E21-B26D-DD1E1825B8CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3D306F0-7ECB-4E21-B26D-DD1E1825B8CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3D306F0-7ECB-4E21-B26D-DD1E1825B8CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3D306F0-7ECB-4E21-B26D-DD1E1825B8CB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
